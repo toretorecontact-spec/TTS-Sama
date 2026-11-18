@@ -1,4 +1,4 @@
-// TwitchSamaTTS build helper: mark the Windows EXE as a GUI-subsystem program.
+// TTS-Sama build helper: mark the Windows EXE as a GUI-subsystem program.
 // Node's node.exe is a console app, so double-clicking a SEA build pops a cmd
 // window. Flipping the PE Subsystem field to IMAGE_SUBSYSTEM_WINDOWS_GUI (2)
 // stops Windows from allocating that console - the app is a panel in Edge

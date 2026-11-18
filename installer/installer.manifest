@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-  <assemblyIdentity version="1.0.0.0" processorArchitecture="x86" name="TwitchSamaTTS.Setup" type="win32" />
-  <description>TwitchSamaTTS Setup</description>
+  <assemblyIdentity version="1.0.0.0" processorArchitecture="x86" name="TTS-Sama.Setup" type="win32" />
+  <description>TTS-Sama Setup</description>
   <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
     <security>
       <requestedPrivileges>

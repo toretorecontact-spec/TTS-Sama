@@ -78,9 +78,9 @@ relative path; all of them must exist locally before this step.
 
 ```bat
 node --experimental-sea-config sea-config.json
-copy /Y "%ProgramFiles%\nodejs\node.exe" TwitchSamaTTS.exe
-npx postject TwitchSamaTTS.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
-node patch-gui.js TwitchSamaTTS.exe
+copy /Y "%ProgramFiles%\nodejs\node.exe" TTS-Sama.exe
+npx postject TTS-Sama.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+node patch-gui.js TTS-Sama.exe
 ```
 
 `patch-gui.js` changes the PE subsystem from console (3) to GUI (2) so no

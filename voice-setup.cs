@@ -1,4 +1,4 @@
-// voice-setup.cs - optional voice installer / diagnostic window for TwitchSamaTTS.
+// voice-setup.cs - optional voice installer / diagnostic window for TTS-Sama.
 //
 // Shown automatically when sapi4-tts.exe reports that no speech engines were
 // found. It never asks for administrator rights just to open: the two install
@@ -386,7 +386,7 @@ internal class SetupForm : Form
     public SetupForm(string lastError)
     {
         this.lastError = lastError;
-        Text = "TwitchSamaTTS - Voice Setup";
+        Text = "TTS-Sama - Voice Setup";
         Size = new Size(660, 600);
         MinimumSize = new Size(560, 500);
         StartPosition = FormStartPosition.CenterScreen;

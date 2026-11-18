@@ -1,7 +1,7 @@
 # Third-party notices
 
 TTS-Sama is not affiliated with, endorsed by or connected to Bonzi Buddy, L&H,
-Microsoft, Twitch or any of the projects listed below. All trademarks and
+Microsoft or any of the projects listed below. All trademarks and
 product names are the property of their respective owners.
 
 ## Components NOT included in this repository

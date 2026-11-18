@@ -14,9 +14,9 @@ $engineBin = Join-Path $buildDir 'engine.bin'
 $iconPath  = Join-Path $buildDir 'setup.ico'
 $source    = Join-Path $buildDir 'installer.cs'
 $manifest  = Join-Path $buildDir 'installer.manifest'
-$outExe    = Join-Path $root 'TwitchSamaTTS-Setup.exe'
-$testExe   = Join-Path $buildDir 'TwitchSamaTTS-Setup-Test.exe'
-$appExe    = Join-Path $root 'TwitchSamaTTS.exe'
+$outExe    = Join-Path $root 'TTS-Sama-Setup.exe'
+$testExe   = Join-Path $buildDir 'TTS-Sama-Setup-Test.exe'
+$appExe    = Join-Path $root 'TTS-Sama.exe'
 $csc       = 'C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe'
 
 foreach ($required in @(

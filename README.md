@@ -1,7 +1,7 @@
 # TTS-Sama
 
-Reads a Twitch channel's chat out loud, with a Windows 95-style control panel.
-No Twitch login or OAuth — it connects to Twitch IRC anonymously and read-only.
+Reads a channel's chat out loud, with a Windows 95-style control panel.
+No login or OAuth — it connects to chat IRC anonymously and read-only.
 
 > **This repository is source code only.** It does **not** contain compiled
 > executables, the Bonzi Buddy / L&H TruVoice DLLs, or the eSpeak NG engine.
@@ -12,7 +12,7 @@ No Twitch login or OAuth — it connects to Twitch IRC anonymously and read-only
 
 ## What the finished app does
 
-- Reads any Twitch channel's chat aloud, fully offline for speech.
+- Reads any channel's chat aloud, fully offline for speech.
 - Starts with the **Bonzi Buddy** voice when the L&H TruVoice engine is
   available: `Adult Male #2, American English (TruVoice)` (mode
   `{CA141FD0-AC7F-11D1-97A3-006008273001}`), pitch 140, speed 157 — the
@@ -41,12 +41,12 @@ No Twitch login or OAuth — it connects to Twitch IRC anonymously and read-only
 
 ## The control panel
 
-Double-click `TwitchSamaTTS.exe`:
+Double-click `TTS-Sama.exe`:
 
 1. Type a channel name (or a `twitch.tv/...` URL).
 2. Click **Start**.
 3. Chat is read aloud. Type `test` and press **Start** for a fake channel that
-   makes up random messages, so you can try voices and effects without Twitch.
+   makes up random messages, so you can try voices and effects offline.
 
 Panel buttons: **Start**, **Stop**, **Skip message**, **Test chat**, **Language**
 filter, **Voice**, 🎲 Random voice, 🎲 Funny voice, 🎲 Auto pitch + speed,
@@ -58,12 +58,12 @@ Closing the panel window closes the app.
 ## Command line
 
 ```
-TwitchSamaTTS.exe xqc
-TwitchSamaTTS.exe twitch.tv/sodapoppin
-TwitchSamaTTS.exe https://www.twitch.tv/kaicenat
-TwitchSamaTTS.exe --gui
-TwitchSamaTTS.exe --voice "eSpeak - Italian"
-TwitchSamaTTS.exe test
+TTS-Sama.exe xqc
+TTS-Sama.exe twitch.tv/sodapoppin
+TTS-Sama.exe https://www.twitch.tv/kaicenat
+TTS-Sama.exe --gui
+TTS-Sama.exe --voice "eSpeak - Italian"
+TTS-Sama.exe test
 ```
 
 | Option | Meaning |
@@ -96,7 +96,7 @@ handled.
 
 | Path | Purpose |
 |---|---|
-| `twitch-sam.js` | Main host: Twitch IRC, speech queue, control panel |
+| `twitch-sam.js` | Main host: chat IRC, speech queue, control panel |
 | `sapi4-tts.cs` | C# 5 speech helper source (SAPI 4 / eSpeak) |
 | `voice-setup.cs` | Voice Setup window source |
 | `voice-setup.manifest` | UAC manifest for Voice Setup (`requireAdministrator`) |
@@ -126,5 +126,5 @@ otherwise; see [LICENSE](LICENSE). Redistribution of the compiled app requires
 separate rights to the proprietary third-party components it uses.
 
 This project is not affiliated with, endorsed by or connected to Bonzi Buddy,
-L&H, Microsoft or Twitch. All trademarks belong to their respective owners.
+L&H, Microsoft. All trademarks belong to their respective owners.
 See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for details.

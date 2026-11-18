@@ -1,4 +1,4 @@
-// sapi4-tts.cs - Microsoft Sam (SAPI4) speech helper for TwitchSamaTTS.
+// sapi4-tts.cs - Microsoft Sam (SAPI4) speech helper for TTS-Sama.
 //
 // Drives the SAPI4 engine directly through its COM interfaces (same sequence
 // as the Microsoft Speech SDK 4.0 samples):

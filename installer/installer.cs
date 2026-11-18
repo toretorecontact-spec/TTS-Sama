@@ -9,7 +9,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace TwitchSamaTTS.Setup
+namespace TTSSama.Setup
 {
     internal static class Program
     {
@@ -31,9 +31,9 @@ namespace TwitchSamaTTS.Setup
 
     internal sealed class SetupForm : Form
     {
-        private const string AppName = "TwitchSamaTTS";
+        private const string AppName = "TTS-Sama";
         private const string Version = "1.0.0";
-        private const string UninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TwitchSamaTTS";
+        private const string UninstallKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTS-Sama";
 
         private readonly string[] _args;
         private readonly string _logPath;
@@ -61,7 +61,7 @@ namespace TwitchSamaTTS.Setup
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(_logPath));
-                File.WriteAllText(_logPath, "TwitchSamaTTS Setup log - " + DateTime.Now.ToString("s") + Environment.NewLine);
+                File.WriteAllText(_logPath, "TTS-Sama Setup log - " + DateTime.Now.ToString("s") + Environment.NewLine);
             }
             catch
             {
@@ -73,7 +73,7 @@ namespace TwitchSamaTTS.Setup
 
         private void BuildUi()
         {
-            Text = "TwitchSamaTTS Setup";
+            Text = "TTS-Sama Setup";
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -91,7 +91,7 @@ namespace TwitchSamaTTS.Setup
             Controls.Add(header);
 
             Label title = new Label();
-            title.Text = "TwitchSamaTTS";
+            title.Text = "TTS-Sama";
             title.Location = new Point(24, 20);
             title.Size = new Size(472, 34);
             title.ForeColor = Color.White;
@@ -100,7 +100,7 @@ namespace TwitchSamaTTS.Setup
             header.Controls.Add(title);
 
             Label sub = new Label();
-            sub.Text = "Reads Twitch chat aloud with local voices";
+            sub.Text = "Reads chat aloud with local voices";
             sub.Location = new Point(26, 60);
             sub.Size = new Size(472, 24);
             sub.ForeColor = Color.FromArgb(190, 190, 196);
@@ -137,7 +137,7 @@ namespace TwitchSamaTTS.Setup
             Controls.Add(_desktopCheck);
 
             _launchCheck = new CheckBox();
-            _launchCheck.Text = "Launch TwitchSamaTTS when finished";
+            _launchCheck.Text = "Launch TTS-Sama when finished";
             _launchCheck.Checked = true;
             _launchCheck.Location = new Point(26, 238);
             _launchCheck.Size = new Size(320, 24);
@@ -224,7 +224,7 @@ namespace TwitchSamaTTS.Setup
                 }
                 else if (string.Equals(arg, "/dryrun", StringComparison.OrdinalIgnoreCase))
                 {
-                    _target = Path.Combine(Path.GetTempPath(), "TwitchSamaTTS-DryRun");
+                    _target = Path.Combine(Path.GetTempPath(), "TTS-Sama-DryRun");
                     _desktopCheck.Checked = false;
                     _launchCheck.Checked = false;
                 }
@@ -365,7 +365,7 @@ namespace TwitchSamaTTS.Setup
                 _status.Text = "Installation failed.";
                 MessageBox.Show(this,
                     ex.Message + Environment.NewLine + Environment.NewLine + "Details were written to:" + Environment.NewLine + _logPath,
-                    "TwitchSamaTTS Setup",
+                    "TTS-Sama Setup",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
@@ -386,11 +386,10 @@ namespace TwitchSamaTTS.Setup
         {
             Directory.CreateDirectory(target);
             byte[] app = ReadResource("AppExe");
-            File.WriteAllBytes(Path.Combine(target, "TwitchSamaTTS.exe"), app);
-            File.WriteAllBytes(Path.Combine(target, "TwitchSam.exe"), app);
+            File.WriteAllBytes(Path.Combine(target, "TTS-Sama.exe"), app);
 
             string setupSrc = Assembly.GetExecutingAssembly().Location;
-            string setupDst = Path.Combine(target, "Uninstall TwitchSamaTTS.exe");
+            string setupDst = Path.Combine(target, "Uninstall TTS-Sama.exe");
             if (!string.Equals(Path.GetFullPath(setupSrc), Path.GetFullPath(setupDst), StringComparison.OrdinalIgnoreCase))
             {
                 File.Copy(setupSrc, setupDst, true);
@@ -398,15 +397,15 @@ namespace TwitchSamaTTS.Setup
 
             string readme = Path.Combine(target, "README.txt");
             File.WriteAllText(readme,
-                "TwitchSamaTTS " + Version + Environment.NewLine +
+                "TTS-Sama " + Version + Environment.NewLine +
                 Environment.NewLine +
-                "Double-click TwitchSamaTTS.exe to open the control panel." + Environment.NewLine +
-                "Type a Twitch channel name or a twitch.tv URL, then click Start." + Environment.NewLine +
+                "Double-click TTS-Sama.exe to open the control panel." + Environment.NewLine +
+                "Type a channel name or a twitch.tv URL, then click Start." + Environment.NewLine +
                 Environment.NewLine +
                 "The Bonzi Buddy voice is installed into Windows during setup and works offline." + Environment.NewLine +
-                "Twitch chat itself still needs an internet connection." + Environment.NewLine +
+                "The chat connection itself still needs an internet connection." + Environment.NewLine +
                 Environment.NewLine +
-                "To uninstall, run 'Uninstall TwitchSamaTTS.exe' from this folder or use Apps & features." + Environment.NewLine,
+                "To uninstall, run 'Uninstall TTS-Sama.exe' from this folder or use Apps & features." + Environment.NewLine,
                 Encoding.UTF8);
         }
 
@@ -425,7 +424,7 @@ namespace TwitchSamaTTS.Setup
 
         private string ExtractEngine()
         {
-            string temp = Path.Combine(Path.GetTempPath(), "TwitchSamaTTS-Setup-" + Guid.NewGuid().ToString("N"));
+            string temp = Path.Combine(Path.GetTempPath(), "TTS-Sama-Setup-" + Guid.NewGuid().ToString("N"));
             Directory.CreateDirectory(temp);
             Log("Engine temp: " + temp);
 
@@ -590,15 +589,15 @@ namespace TwitchSamaTTS.Setup
             string folder = Path.Combine(programs, AppName);
             Directory.CreateDirectory(folder);
 
-            string appExe = Path.Combine(target, "TwitchSamaTTS.exe");
-            string uninstallExe = Path.Combine(target, "Uninstall TwitchSamaTTS.exe");
+            string appExe = Path.Combine(target, "TTS-Sama.exe");
+            string uninstallExe = Path.Combine(target, "Uninstall TTS-Sama.exe");
 
-            MakeShortcut(shell, Path.Combine(folder, "TwitchSamaTTS.lnk"), appExe, "", target, "Read Twitch chat aloud");
-            MakeShortcut(shell, Path.Combine(folder, "Uninstall TwitchSamaTTS.lnk"), uninstallExe, "/uninstall", target, "Uninstall TwitchSamaTTS");
+            MakeShortcut(shell, Path.Combine(folder, "TTS-Sama.lnk"), appExe, "", target, "Read chat aloud");
+            MakeShortcut(shell, Path.Combine(folder, "Uninstall TTS-Sama.lnk"), uninstallExe, "/uninstall", target, "Uninstall TTS-Sama");
             if (desktop)
             {
                 string desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory);
-                MakeShortcut(shell, Path.Combine(desktopDir, "TwitchSamaTTS.lnk"), appExe, "", target, "Read Twitch chat aloud");
+                MakeShortcut(shell, Path.Combine(desktopDir, "TTS-Sama.lnk"), appExe, "", target, "Read chat aloud");
             }
         }
 
@@ -625,15 +624,15 @@ namespace TwitchSamaTTS.Setup
                 if (key == null) return;
                 key.SetValue("DisplayName", AppName, RegistryValueKind.String);
                 key.SetValue("DisplayVersion", Version, RegistryValueKind.String);
-                key.SetValue("Publisher", "TwitchSamaTTS", RegistryValueKind.String);
+                key.SetValue("Publisher", "TTS-Sama", RegistryValueKind.String);
                 key.SetValue("InstallLocation", target, RegistryValueKind.String);
-                key.SetValue("UninstallString", "\"" + Path.Combine(target, "Uninstall TwitchSamaTTS.exe") + "\" /uninstall", RegistryValueKind.String);
-                key.SetValue("DisplayIcon", Path.Combine(target, "TwitchSamaTTS.exe") + ",0", RegistryValueKind.String);
+                key.SetValue("UninstallString", "\"" + Path.Combine(target, "Uninstall TTS-Sama.exe") + "\" /uninstall", RegistryValueKind.String);
+                key.SetValue("DisplayIcon", Path.Combine(target, "TTS-Sama.exe") + ",0", RegistryValueKind.String);
                 key.SetValue("NoModify", 1, RegistryValueKind.DWord);
                 key.SetValue("NoRepair", 1, RegistryValueKind.DWord);
                 try
                 {
-                    FileInfo fi = new FileInfo(Path.Combine(target, "TwitchSamaTTS.exe"));
+                    FileInfo fi = new FileInfo(Path.Combine(target, "TTS-Sama.exe"));
                     if (fi.Exists) key.SetValue("EstimatedSize", (int)(fi.Length / 1024), RegistryValueKind.DWord);
                 }
                 catch
@@ -648,10 +647,10 @@ namespace TwitchSamaTTS.Setup
             {
                 string root = Environment.GetEnvironmentVariable("ProgramW6432");
                 if (string.IsNullOrEmpty(root)) root = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-                string exe = Path.Combine(root, AppName, "TwitchSamaTTS.exe");
+                string exe = Path.Combine(root, AppName, "TTS-Sama.exe");
                 if (!File.Exists(exe))
                 {
-                    exe = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), AppName, "TwitchSamaTTS.exe");
+                    exe = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), AppName, "TTS-Sama.exe");
                 }
                 if (File.Exists(exe))
                 {
@@ -681,7 +680,7 @@ namespace TwitchSamaTTS.Setup
     {
         public UninstallForm()
         {
-            Text = "Uninstall TwitchSamaTTS";
+            Text = "Uninstall TTS-Sama";
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
@@ -691,7 +690,7 @@ namespace TwitchSamaTTS.Setup
             Font = new Font("Segoe UI", 9F);
 
             Label label = new Label();
-            label.Text = "Remove TwitchSamaTTS from this computer?\r\n\r\nThe shared Windows speech engines will be left installed.";
+            label.Text = "Remove TTS-Sama from this computer?\r\n\r\nThe shared Windows speech engines will be left installed.";
             label.Location = new Point(24, 24);
             label.Size = new Size(372, 70);
             label.ForeColor = Color.White;
@@ -725,26 +724,26 @@ namespace TwitchSamaTTS.Setup
             try
             {
                 string target = null;
-                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TwitchSamaTTS"))
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTS-Sama"))
                 {
                     if (key != null) target = key.GetValue("InstallLocation") as string;
                 }
 
-                if (!string.IsNullOrEmpty(target) && target.IndexOf("TwitchSamaTTS", StringComparison.OrdinalIgnoreCase) >= 0 && Directory.Exists(target))
+                if (!string.IsNullOrEmpty(target) && target.IndexOf("TTS-Sama", StringComparison.OrdinalIgnoreCase) >= 0 && Directory.Exists(target))
                 {
                     Directory.Delete(target, true);
                 }
 
                 string programs = Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms);
-                string folder = Path.Combine(programs, "TwitchSamaTTS");
+                string folder = Path.Combine(programs, "TTS-Sama");
                 if (Directory.Exists(folder)) Directory.Delete(folder, true);
 
                 string desktopDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonDesktopDirectory);
-                string desktopLink = Path.Combine(desktopDir, "TwitchSamaTTS.lnk");
+                string desktopLink = Path.Combine(desktopDir, "TTS-Sama.lnk");
                 if (File.Exists(desktopLink)) File.Delete(desktopLink);
 
-                Registry.LocalMachine.DeleteSubKeyTree(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TwitchSamaTTS", false);
-                MessageBox.Show(this, "TwitchSamaTTS was removed.", "Uninstall", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Registry.LocalMachine.DeleteSubKeyTree(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\TTS-Sama", false);
+                MessageBox.Show(this, "TTS-Sama was removed.", "Uninstall", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {

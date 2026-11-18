@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 
-// TwitchSamaTTS - plays a pre-parsed note list on the Windows General MIDI
+// TTS-Sama - plays a pre-parsed note list on the Windows General MIDI
 // synthesizer. The host picks a random GM program and passes it as arg 2.
 class MidiPlay {
   [DllImport("winmm.dll")]

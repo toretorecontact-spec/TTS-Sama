@@ -32,14 +32,9 @@ No login or OAuth — it connects to chat IRC anonymously and read-only.
 - The EXE is patched to the Windows **GUI subsystem (2)** so no console, cmd,
   PowerShell or Node window appears. The only visible window is the control
   panel.
-- Dark neutral theme with Windows 95-style beveled buttons, a transparent logo
-  and tooltips that appear **below** the hovered control.
 - 🎵 Annoying MIDI button: plays one of 23 bundled high-BPM scale/arpeggio MIDI
   tracks through the Windows Microsoft GS Wavetable Synth with a randomly
   chosen General MIDI instrument. ⏹ Stop MIDI cuts it off instantly.
-- Button presses play a soft rising bell dingle generated in the browser — no
-  sound files or downloads.
-- The browser "Do you want to translate this page?" bubble is suppressed.
 
 ## The control panel
 

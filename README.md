@@ -10,6 +10,8 @@ No login or OAuth — it connects to chat IRC anonymously and read-only.
 > [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md). See
 > [License / legal](#license--legal) below.
 
+**Made with [OpenCode](https://opencode.ai/).**
+
 ## What the finished app does
 
 - Reads any channel's chat aloud, fully offline for speech.

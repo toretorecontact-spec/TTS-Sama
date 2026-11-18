@@ -46,6 +46,11 @@ Obtain them only from sources that give you the right to use them.
   sine-wave bell notes; no recorded audio is bundled.
 - **Icon** — `installer/setup.ico` is a simple generated icon.
 
+## Development tools
+
+- **OpenCode** — the AI coding agent used to build and rebrand this project.
+  It is a development tool only and is not bundled with or required by the app.
+
 ## Code
 
 The source files in this repository are original to this project except where

@@ -1,0 +1,44 @@
+# Compiled executables and libraries
+*.exe
+*.dll
+*.bin
+*.obj
+*.pdb
+*.ilk
+*.lib
+*.exp
+
+# Generated build artifacts
+sea-prep.blob
+engine.bin
+engine-slim.bin
+voice-setup-portable.bin
+installer/engine-stage/
+
+# Third-party binaries that must be supplied locally
+espeak-pack.zip
+espeak/
+sapi4/
+
+# Packages / archives
+*.rar
+*.zip
+*.7z
+
+# Crash dumps and diagnostics
+*.dmp
+dumps/
+diag-*.rar
+
+# Local logs and temporary files
+smoke-*.txt
+*.log
+*.tmp
+*.wav
+
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/

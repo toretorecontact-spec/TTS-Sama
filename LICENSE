@@ -1,0 +1,9 @@
+Copyright (c) 2026 toretorecontact-spec. All rights reserved.
+
+All rights to the source code in this repository are reserved by the author.
+No open-source license is granted. You may view and modify the source for your
+own private use, but you may not redistribute it without permission.
+
+The compiled application depends on third-party components that are NOT
+included in this repository. See THIRD-PARTY-NOTICES.md. You are responsible for
+obtaining any required rights to those components before distributing a build.
